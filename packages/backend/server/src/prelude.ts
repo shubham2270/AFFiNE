@@ -56,6 +56,7 @@ async function load() {
 
   // 6. apply `process.env` map overriding to `globalThis.AFFiNE`
   applyEnvToConfig(globalThis.AFFiNE);
+  await import('./fundamentals/metrics/register');
 }
 
 await load();
