@@ -500,7 +500,7 @@ __metadata:
   resolution: "@affine/electron-api@workspace:packages/frontend/electron-api"
   dependencies:
     "@toeverything/infra": "workspace:*"
-    electron: "npm:^30.1.1"
+    electron: "npm:^31.0.0"
   languageName: unknown
   linkType: soft
 
@@ -538,7 +538,7 @@ __metadata:
     builder-util-runtime: "npm:^9.2.5-alpha.2"
     core-js: "npm:^3.36.1"
     cross-env: "npm:^7.0.3"
-    electron: "npm:^30.1.1"
+    electron: "npm:^31.0.0"
     electron-log: "npm:^5.1.2"
     electron-squirrel-startup: "npm:1.0.1"
     electron-updater: "npm:^6.2.1"
@@ -650,7 +650,7 @@ __metadata:
     "@vitest/coverage-istanbul": "npm:1.6.0"
     "@vitest/ui": "npm:1.6.0"
     cross-env: "npm:^7.0.3"
-    electron: "npm:^30.1.1"
+    electron: "npm:^31.0.0"
     eslint: "npm:^8.57.0"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-import-x: "npm:^0.5.0"
@@ -22159,16 +22159,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron@npm:^30.1.1":
-  version: 30.1.2
-  resolution: "electron@npm:30.1.2"
+"electron@npm:^31.0.0":
+  version: 31.0.2
+  resolution: "electron@npm:31.0.2"
   dependencies:
     "@electron/get": "npm:^2.0.0"
     "@types/node": "npm:^20.9.0"
     extract-zip: "npm:^2.0.1"
   bin:
     electron: cli.js
-  checksum: 10/ab8a67ac4a318aa8a1751d561b070007001398c642f98ebf41ce98e37b4b38e0ae80c7cb5bda1603c889433235f2e0176136e4d3b0ce177ebd9d1ba79f12cdc4
+  checksum: 10/b1f1ec03990a2f168411ffee0c0bfc106fad17d4ef1c684aea8b0341ef8f5d22d55285ae9e7a04e896a5a77b290aa03c766283f027fb2918637d50606aabc8ba
   languageName: node
   linkType: hard
 
