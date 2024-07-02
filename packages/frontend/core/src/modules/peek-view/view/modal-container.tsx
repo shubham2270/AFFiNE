@@ -265,6 +265,18 @@ export const PeekViewModalContainer = forwardRef<
   }, []);
 
   useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onOpenChange(false);
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [onOpenChange]);
+
+  useEffect(() => {
     if (animation === 'zoom') {
       open ? animateZoomIn() : animateZoomOut();
     } else if (animation === 'fade') {
