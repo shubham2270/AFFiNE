@@ -1,4 +1,5 @@
 import { toast } from '@affine/component';
+import { openInfoModalAtom } from '@affine/core/atoms';
 import {
   PreconditionStrategy,
   registerAffineCommand,
@@ -35,6 +36,7 @@ export function useRegisterBlocksuiteEditorCommands() {
   const trash = useLiveData(doc.trash$);
 
   const setPageHistoryModalState = useSetAtom(pageHistoryModalAtom);
+  const setInfoModalState = useSetAtom(openInfoModalAtom);
 
   const openHistoryModal = useCallback(() => {
     setPageHistoryModalState(() => ({
@@ -42,6 +44,10 @@ export function useRegisterBlocksuiteEditorCommands() {
       open: true,
     }));
   }, [docId, setPageHistoryModalState]);
+
+  const openInfoModal = useCallback(() => {
+    setInfoModalState(true);
+  }, [setInfoModalState]);
 
   const { restoreFromTrash, duplicate } =
     useBlockSuiteMetaHelper(docCollection);
@@ -85,6 +91,24 @@ export function useRegisterBlocksuiteEditorCommands() {
     //     },
     //   })
     // );
+
+    unsubs.push(
+      registerAffineCommand({
+        id: `editor:${mode}-view-info`,
+        preconditionStrategy,
+        category: `editor:${mode}`,
+        icon: mode === 'page' ? <PageIcon /> : <EdgelessIcon />,
+        label: t['com.affine.page-properties.page-info.view'](),
+        run() {
+          mixpanel.track('OpenDocInfoModal', {
+            control: 'cmdk',
+            type: 'doc info',
+            category: 'doc',
+          });
+          openInfoModal();
+        },
+      })
+    );
 
     unsubs.push(
       registerAffineCommand({
@@ -275,5 +299,6 @@ export function useRegisterBlocksuiteEditorCommands() {
     favAdapter,
     docId,
     doc,
+    openInfoModal,
   ]);
 }
