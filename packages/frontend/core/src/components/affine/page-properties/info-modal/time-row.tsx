@@ -1,6 +1,7 @@
 import { i18nTime, useI18n } from '@affine/i18n';
 import { DateTimeIcon, HistoryIcon } from '@blocksuite/icons/rc';
 import { useLiveData, useService, WorkspaceService } from '@toeverything/infra';
+import type { ConfigType } from 'dayjs';
 import { useDebouncedValue } from 'foxact/use-debounced-value';
 import { type ReactNode, useContext, useMemo } from 'react';
 
@@ -34,9 +35,20 @@ export const TimeRow = ({ docId }: { docId: string }) => {
   const { syncing, retrying, serverClock } = useLiveData(
     workspaceService.workspace.engine.doc.docState$(docId)
   );
+
   const timestampElement = useMemo(() => {
+    const formatI18nTime = (time: ConfigType) =>
+      i18nTime(time, {
+        relative: {
+          max: [1, 'day'],
+          accuracy: 'minute',
+        },
+        absolute: {
+          accuracy: 'day',
+        },
+      });
     const localizedCreateTime = manager.createDate
-      ? i18nTime(manager.createDate)
+      ? formatI18nTime(manager.createDate)
       : null;
 
     return (
@@ -46,15 +58,7 @@ export const TimeRow = ({ docId }: { docId: string }) => {
           name={t['Created']()}
           time={
             manager.createDate
-              ? i18nTime(manager.createDate, {
-                  relative: {
-                    max: [1, 'day'],
-                    accuracy: 'minute',
-                  },
-                  absolute: {
-                    accuracy: 'day',
-                  },
-                })
+              ? formatI18nTime(manager.createDate)
               : localizedCreateTime
           }
         />
@@ -62,25 +66,13 @@ export const TimeRow = ({ docId }: { docId: string }) => {
           <RowComponent
             icon={<HistoryIcon />}
             name={t[!syncing && !retrying ? 'Updated' : 'com.affine.syncing']()}
-            time={
-              !syncing && !retrying
-                ? i18nTime(serverClock, {
-                    relative: {
-                      max: [1, 'day'],
-                      accuracy: 'minute',
-                    },
-                    absolute: {
-                      accuracy: 'day',
-                    },
-                  })
-                : null
-            }
+            time={!syncing && !retrying ? formatI18nTime(serverClock) : null}
           />
         ) : manager.updatedDate ? (
           <RowComponent
             icon={<HistoryIcon />}
             name={t['Updated']()}
-            time={i18nTime(manager.updatedDate)}
+            time={formatI18nTime(manager.updatedDate)}
           />
         ) : null}
       </>

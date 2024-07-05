@@ -89,9 +89,6 @@ export const PageHeaderMenuButton = ({
 
   const setOpenInfoModal = useSetAtom(openInfoModalAtom);
   const openInfoModal = () => {
-    mixpanel.track('Button', {
-      resolve: 'OpenDocInfoModal',
-    });
     setOpenInfoModal(true);
   };
 

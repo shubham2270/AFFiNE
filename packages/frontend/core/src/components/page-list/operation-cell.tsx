@@ -71,9 +71,6 @@ export const PageOperationCell = ({
 
   const [openInfoModal, setOpenInfoModal] = useState(false);
   const onOpenInfoModal = () => {
-    mixpanel.track('Button', {
-      resolve: 'OpenDocInfoModal',
-    });
     setOpenInfoModal(true);
   };
 

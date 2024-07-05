@@ -4,7 +4,6 @@ import { Menu } from '@affine/component/ui/menu';
 import { InfoModal } from '@affine/core/components/affine/page-properties';
 import { FavoriteItemsAdapter } from '@affine/core/modules/properties';
 import { WorkbenchService } from '@affine/core/modules/workbench';
-import { mixpanel } from '@affine/core/utils';
 import { useI18n } from '@affine/i18n';
 import { MoreHorizontalIcon } from '@blocksuite/icons/rc';
 import { useService, useServices, WorkspaceService } from '@toeverything/infra';
@@ -82,9 +81,6 @@ export const OperationMenuButton = ({ ...props }: OperationMenuButtonProps) => {
   }, [pageId, workbench]);
 
   const handleOpenInfoModal = useCallback(() => {
-    mixpanel.track('Button', {
-      resolve: 'OpenDocInfoModal',
-    });
     setOpenInfoModal(true);
   }, [setOpenInfoModal]);
 

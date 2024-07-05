@@ -100,11 +100,6 @@ export function useRegisterBlocksuiteEditorCommands() {
         icon: mode === 'page' ? <PageIcon /> : <EdgelessIcon />,
         label: t['com.affine.page-properties.page-info.view'](),
         run() {
-          mixpanel.track('OpenDocInfoModal', {
-            control: 'cmdk',
-            type: 'doc info',
-            category: 'doc',
-          });
           openInfoModal();
         },
       })
