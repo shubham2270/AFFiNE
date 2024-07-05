@@ -20,14 +20,12 @@ export const TagsRow = ({
   const tagIds = useLiveData(tagList.tagIdsByPageId$(docId));
   const empty = !tagIds || tagIds.length === 0;
   return (
-    <div className={styles.rowCell} data-property="tags">
-      <div className={clsx(styles.rowCell)}>
-        <div className={styles.rowNameContainer}>
-          <div className={styles.icon}>
-            <TagsIcon />
-          </div>
-          <div className={styles.rowName}>{t['Tags']()}</div>
+    <div className={styles.rowCell} data-testid="info-modal-tags-row">
+      <div className={styles.rowNameContainer}>
+        <div className={styles.icon}>
+          <TagsIcon />
         </div>
+        <div className={styles.rowName}>{t['Tags']()}</div>
       </div>
       <Menu
         contentOptions={{
@@ -46,6 +44,7 @@ export const TagsRow = ({
           className={clsx(styles.tagsInlineEditor, styles.rowValueCell)}
           data-empty={empty}
           data-readonly={readonly}
+          data-testid="info-modal-tags-value"
         >
           {empty ? (
             t['com.affine.page-properties.property-value-placeholder']()

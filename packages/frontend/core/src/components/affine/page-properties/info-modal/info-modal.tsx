@@ -67,8 +67,11 @@ export const InfoModal = ({
       withoutCloseButton
     >
       <Scrollable.Root>
-        <Scrollable.Viewport className={styles.viewport}>
-          <div className={styles.titleContainer}>
+        <Scrollable.Viewport
+          className={styles.viewport}
+          data-testid="info-modal"
+        >
+          <div className={styles.titleContainer} data-testid="info-modal-title">
             <BlocksuiteHeaderTitle
               className={styles.titleStyle}
               inputHandleRef={titleInputHandleRef}

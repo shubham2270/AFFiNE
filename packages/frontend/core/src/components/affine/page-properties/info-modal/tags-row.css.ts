@@ -13,7 +13,6 @@ export const rowNameContainer = style({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-
   gap: 6,
   padding: 6,
   width: '160px',
@@ -39,7 +38,7 @@ export const time = style({
 export const rowCell = style({
   display: 'flex',
   flexDirection: 'row',
-  alignItems: 'center',
+  alignItems: 'start',
   gap: 4,
 });
 

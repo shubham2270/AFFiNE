@@ -17,7 +17,7 @@ export const InfoButton = () => {
   return (
     <Tooltip content={t['com.affine.page-properties.page-info.view']()}>
       <IconButton
-        data-testid="info-button"
+        data-testid="header-info-button"
         onClick={onOpenInfoModal}
         icon={<InformationIcon />}
       />
